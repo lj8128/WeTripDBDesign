@@ -12,17 +12,17 @@ Reference <a href="https://dbdiagram.io/d">dbdiagram's example schema</a> to see
 
 1. Note that dbdiagram makes us name our tables in the format `<schema>.<table_name>`. If we don't specify a schema, dbdiagram puts in 'public' as the schema name for the default. This is why I've temporarily named all the tables `WT.<table_name>`, where 'WT' stands for WeTrip.
 
-2. Say that you want to declare that the attribute id of the user table: (i) is a primary key, and (ii) has a one-to-many relationship with the user-trip table's trip_id attribute. Then you would write:
+2. Say that you want to declare that the attribute `id` of  table `A`: (i) is a primary key, and (ii) has a one-to-many relationship with table `B`'s `id` attribute. Then you would write:
 ```
-  Table user {
-    id int[pk, ref: < user-trip.trip_id]
+  Table A {
+    id int[pk, ref: < B.id]
   }
 ```
 
-If you want to add a comment that the user's id should be an SSN, you would code:
+If you want to add a comment that the ids of table A should be SSNs. Then you would code:
 ```
-  Table user {
-    id int[pk, ref: < user-trip.trip_id, node: 'user's SSN']
+  Table A {
+    id int[pk, ref: < B.id, note:'must be a SSN']
   }
 ```
 
