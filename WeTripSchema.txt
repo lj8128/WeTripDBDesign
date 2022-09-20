@@ -8,6 +8,10 @@ Table WT.trip {
   id int [pk, ref: < U_T.user_id]
 }
 
+Table WT.images {
+  id int [pk, ref: > WT.trip.id]
+}
+
 Table WT.user_trip_junction as U_T {
   user_id int [note: 'fk(user_id) => WT.user(id)']
   trip_id int [note: 'fk(trip_id) => WT.trip(id)']
