@@ -1,0 +1,58 @@
+// WeTrip Schema
+
+Table WT.user {
+  id int [pk, ref: < U_T.trip_id]
+}
+
+Table WT.trip {
+  id int [pk, ref: < U_T.user_id]
+}
+
+Table WT.user_trip_junction as U_T {
+  user_id int [note: 'fk(user_id) => WT.user(id)']
+  trip_id int [note: 'fk(trip_id) => WT.trip(id)']
+  
+  Indexes {
+   (user_id, trip_id) [pk] 
+  }
+}
+
+Table WT.budget {
+  trip_id int [ref: > WT.trip.id, note: 'fk(trip_id) => WT.trip(id)']
+  category varchar 
+  amount float
+  
+  Indexes {
+    (trip_id, category, amount) [pk]
+  }
+}
+
+Table WT.daily_plan {
+  trip_id int [ref: > WT.trip.id, note: 'fk(trip_id) => WT.trip(id)']
+  day varchar
+  event_id int [note: 'fk(event_id) => WT.event.id']
+  
+  Indexes {
+    (trip_id, day, event_id) [pk]
+  }
+}
+
+Table WT.event {
+  id int [pk, ref: < WT.daily_plan.trip_id]
+}
+
+Table WT.hotel {
+  id int [pk, ref: < WT.event.id]
+}
+
+Table WT.transport {
+  id int [pk, ref: < WT.event.id]
+}
+
+Table WT.food {
+  id int [pk, ref: < WT.event.id]
+}
+
+Table WT.Bill {
+  id int [pk, ref: < WT.event.id]
+}
