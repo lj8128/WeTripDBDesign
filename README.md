@@ -8,7 +8,7 @@
 5. Push your changes.
 
 ## Comments on dbdiagram's Syntax
-Reference [dbdiagram's example schema]("https://dbdiagram.io/d") to see how its syntax works. It's pretty self-explanatory, except:
+Reference <a href="https://dbdiagram.io/d">dbdiagram's example schema</a> to see how its syntax works. It's pretty self-explanatory, except:
 
 1. Note that dbdiagram makes us name our tables in the format `<schema>.<table_name>`. If we don't specify a schema, dbdiagram puts in 'public' as the schema name for the default. This is why I've temporarily named all the tables `WT.<table_name>`, where 'WT' stands for WeTrip.
 
